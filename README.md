@@ -27,4 +27,5 @@ O objetivo é permitir o **cadastro de participantes**, a **listagem de eventos*
 ## 🚀 Como Executar
 1. Clone o repositório:
    ```bash
- https://github.com/17242196-tech/Projeto-CertiEventos/edit/main/README.md  
+git clone https://github.com/17242196-tech/Projeto-CertiEventos.git
+
