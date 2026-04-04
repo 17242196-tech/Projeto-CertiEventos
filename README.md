@@ -12,7 +12,7 @@ O objetivo é permitir o **cadastro de participantes**, a **listagem de eventos*
 - **Padrões de Projeto** aplicados:
   - **Singleton** → garante uma única conexão com o banco.
   - **Facade** → encapsula a lógica de acesso ao banco e expõe métodos simples ao servidor.
-  - Insomnia → utilizado para testar as rotas da API (ex.: cadastro de participantes, listagem de eventos).
+  - **Insomnia** → utilizado para testar as rotas da API (ex.: cadastro de participantes, listagem de eventos).
 
 ---
 
