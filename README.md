@@ -1,7 +1,7 @@
-# ESUDA Conecta
+# CERTIEVENTOS
 
 ## 📌 Resumo
-O **ESUDA Conecta** é um sistema de gestão de eventos acadêmicos e profissionais (seminários, workshops, palestras e congressos).  
+O **CERTIEVENTOS** é um sistema de gestão de eventos acadêmicos e profissionais (seminários, workshops, palestras e congressos).  
 O objetivo é permitir o **cadastro de participantes**, a **listagem de eventos**, além da **emissão e validação de certificados** de forma prática e integrada.
 
 ---
