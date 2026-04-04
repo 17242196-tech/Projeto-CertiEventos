@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Eventos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/w3.css">
+</head>
+
+<body class="admin-body">
+
+    <div class="admin-sidebar">
+        <h2 class="admin-logo">ESUDA Admin</h2>
+        <nav class="admin-nav">
+            <a href="html/admin_events.html" class="nav-item-admin nav-active"><i class="bi bi-calendar-event"></i>
+                Gestão de Eventos</a>
+            <a href="html/admin_admins.html" class="nav-item-admin"><i class="bi bi-person-gear"></i> Gestão de
+                Admins</a>
+            <a href="html/admin_login.html" class="nav-item-admin logout-btn"><i class="bi bi-box-arrow-right"></i>
+                Sair</a>
+        </nav>
+    </div>
+
+    <main class="admin-main-content">
+        <div class="admin-header">
+            <h1 class="page-title-admin">Gerenciar Eventos</h1>
+            <a href="html/page-6-cadastro-eventos.html" class="btn-principal-admin">+ Novo Evento</a>
+        </div>
+
+        <div class="admin-panel">
+            <h3 class="panel-subtitle">Lista de Eventos Cadastrados (Últimos 10)</h3>
+
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Evento</th>
+                            <th>Categoria</th>
+                            <th>Inscritos</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Workshop: Lógica de Programação</td>
+                            <td>Workshop</td>
+                            <td>45</td>
+                            <td>20/12/2025</td>
+                            <td><span class="status-tag active">Ativo</span></td>
+                            <td>
+                                <a href="html/page-6-cadastro-eventos.html?id=101" class="action-btn edit-btn"
+                                    title="Editar"><i class="bi bi-pencil"></i></a>
+                                <button class="action-btn deactivate-btn" title="Desativar"><i
+                                        class="bi bi-toggle-on"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Congresso de Inovação</td>
+                            <td>Congresso</td>
+                            <td>210</td>
+                            <td>05/01/2026</td>
+                            <td><span class="status-tag inactive">Rascunho</span></td>
+                            <td>
+                                <a href="html/page-6-cadastro-eventos.html?id=102" class="action-btn edit-btn"
+                                    title="Editar"><i class="bi bi-pencil"></i></a>
+                                <button class="action-btn activate-btn" title="Ativar"><i
+                                        class="bi bi-toggle-off"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </main>
+</body>
+
+</html>
