@@ -9,7 +9,6 @@ const app = express();
 app.use(express.json());
 
 // ---------------- CONFIG FRONTEND ---------------- //
-// Servir todos os arquivos da pasta "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Página inicial
@@ -42,17 +41,17 @@ app.get('/participantes', async (req, res) => {
     res.json(result.recordset);
   } catch (error) {
     console.error('Erro ao listar participantes:', error);
-    res.status(500).send('Erro ao listar participantes');
+    res.status(500).json({ mensagem: 'Erro ao listar participantes', detalhe: error.message });
   }
 });
 
 app.post('/participantes', async (req, res) => {
   try {
     await participantesFacade.adicionarParticipante(req.body);
-    res.send('Participante adicionado com sucesso!');
+    res.status(201).json({ mensagem: 'Participante adicionado com sucesso!' });
   } catch (error) {
     console.error('Erro ao adicionar participante:', error);
-    res.status(500).send('Erro ao adicionar participante');
+    res.status(500).json({ mensagem: 'Erro ao adicionar participante', detalhe: error.message });
   }
 });
 
@@ -61,10 +60,10 @@ app.put('/participantes/:cpf', async (req, res) => {
     const { cpf } = req.params;
     const { endereco } = req.body;
     await participantesFacade.atualizarEndereco(cpf, endereco);
-    res.send('Endereço atualizado com sucesso!');
+    res.json({ mensagem: 'Endereço atualizado com sucesso!' });
   } catch (error) {
     console.error('Erro ao atualizar participante:', error);
-    res.status(500).send('Erro ao atualizar participante');
+    res.status(500).json({ mensagem: 'Erro ao atualizar participante', detalhe: error.message });
   }
 });
 
@@ -72,10 +71,10 @@ app.delete('/participantes/:cpf', async (req, res) => {
   try {
     const { cpf } = req.params;
     await participantesFacade.removerParticipante(cpf);
-    res.send('Participante removido com sucesso!');
+    res.json({ mensagem: 'Participante removido com sucesso!' });
   } catch (error) {
     console.error('Erro ao remover participante:', error);
-    res.status(500).send('Erro ao remover participante');
+    res.status(500).json({ mensagem: 'Erro ao remover participante', detalhe: error.message });
   }
 });
 
@@ -90,7 +89,7 @@ app.get('/certificados', async (req, res) => {
     res.json(result.recordset);
   } catch (error) {
     console.error('Erro ao buscar certificados:', error);
-    res.status(500).send('Erro ao buscar certificados');
+    res.status(500).json({ mensagem: 'Erro ao buscar certificados', detalhe: error.message });
   }
 });
 
@@ -106,10 +105,10 @@ app.post('/certificados', async (req, res) => {
         INSERT INTO dbo.certificados (codigo, email, evento_id, emitido_em)
         VALUES (@codigo, @email, @evento_id, GETDATE())
       `);
-    res.send('Certificado criado com sucesso!');
+    res.status(201).json({ mensagem: 'Certificado criado com sucesso!' });
   } catch (error) {
     console.error('Erro ao criar certificado:', error);
-    res.status(500).send('Erro ao criar certificado');
+    res.status(500).json({ mensagem: 'Erro ao criar certificado', detalhe: error.message });
   }
 });
 
@@ -127,7 +126,7 @@ app.get('/certificados/validar', async (req, res) => {
     }
   } catch (error) {
     console.error('Erro ao validar certificado:', error);
-    res.status(500).send('Erro ao validar certificado');
+    res.status(500).json({ mensagem: 'Erro ao validar certificado', detalhe: error.message });
   }
 });
 
@@ -141,17 +140,68 @@ app.get('/certificados/:id', async (req, res) => {
     if (result.recordset.length > 0) {
       res.json(result.recordset[0]);
     } else {
-      res.status(404).send('Certificado não encontrado');
+      res.status(404).json({ mensagem: 'Certificado não encontrado' });
     }
   } catch (error) {
     console.error('Erro ao emitir certificado:', error);
-    res.status(500).send('Erro ao emitir certificado');
+    res.status(500).json({ mensagem: 'Erro ao emitir certificado', detalhe: error.message });
+  }
+});
+
+// 4) Login Administrativo
+app.post('/login', async (req, res) => {
+  const { email, senha } = req.body;
+
+  try {
+    const pool = await getConnection();
+    const result = await pool.request()
+      .input('email', sql.VarChar, email)
+      .query('SELECT * FROM dbo.administradores WHERE email = @email');
+
+    if (result.recordset.length === 0) {
+      return res.status(401).json({ mensagem: 'Login inválido' });
+    }
+
+    const admin = result.recordset[0];
+
+    if (senha !== admin.senha_hash) {
+      return res.status(401).json({ mensagem: 'Login inválido' });
+    }
+
+    res.json({ mensagem: 'Login realizado com sucesso!', admin });
+  } catch (error) {
+    console.error('Erro ao validar login:', error);
+    res.status(500).json({ mensagem: 'Erro no servidor', detalhe: error.message });
+  }
+});
+
+// 5) Inscrições (JOIN participantes + eventos)
+app.get('/inscricoes', async (req, res) => {
+  try {
+    const pool = await getConnection();
+    const result = await pool.request().query(`
+      SELECT p.id, p.nome_completo, p.email, e.titulo AS evento
+      FROM dbo.participantes p
+      JOIN dbo.eventos e ON p.evento_id = e.id
+    `);
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Erro ao listar inscrições:', error);
+    res.status(500).json({ mensagem: 'Erro ao listar inscrições', detalhe: error.message });
   }
 });
 
 // ---------------- ROTAS FRONTEND AMIGAS ---------------- //
 app.get('/cadastro', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/page-3-cadUsuario.html'));
+});
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/admin_login.html'));
+});
+
+app.get('/admin-dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/page-admin-dashboard.html'));
 });
 
 // ---------------- INICIAR SERVIDOR ---------------- //
