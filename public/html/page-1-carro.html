@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESUDA Conecta | Tipos de Eventos</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo ESUDA Conecta" class="logo-img">
+        <nav class="w3-hide-small w3-card-2" style="margin-top: 0px;">
+            <div class="w3-bar w3-black w3-padding-small" id="main-nav">
+                <a href="https://esuda.edu.br/" target="_blank"
+                    class="w3-bar-item w3-button w3-hover-orange w3-mobile w3-text-white">HOME ESUDA</a>
+                <a href="index.html" class="w3-bar-item w3-button w3-hover-orange w3-mobile">INÍCIO</a>
+
+                <div class="w3-dropdown-hover w3-mobile">
+                    <button class="w3-button w3-hover-orange">SETOR DO USUÁRIO <i
+                            class="fas fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-blue w3-bar-block w3-card-4 w3-animate-opacity dropdown-esuda">
+                        <a href="html/page-3-cadUsuario.html" class="w3-bar-item w3-button">Cadastrar Usuário</a>
+                        <a href="html/page-1-carro.html" class="w3-bar-item w3-button">Tipos de Eventos</a>
+                        <a href="html/page-2-listagem.html" class="w3-bar-item w3-button">Lista de Eventos</a>
+                        <a href="html/page-5-certificado.html" class="w3-bar-item w3-button">Certificado</a>
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover w3-mobile">
+                    <button class="w3-button w3-hover-orange">EVENTOS <i class="fas fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-blue w3-bar-block w3-card-4 w3-animate-opacity dropdown-esuda">
+                        <a href="html/admin_login.html" class="w3-bar-item w3-button">Cadastrar Evento</a>
+                        <a href="html/page-1-carro.html" class="w3-bar-item w3-button">Tipo de Evento</a>
+                        <a href="html/page-2-listagem.html" class="w3-bar-item w3-button">Lista de Eventos</a>
+                        <a href="html/page-3-cadUsuario.html" class="w3-bar-item w3-button">Inscreva-se</a>
+                    </div>
+                </div>
+
+                <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-border w3-white w3-small"
+                    style="width: 200px; margin-top: 4px;" placeholder="Pesquisar Eventos">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-content-carrossel">
+
+            <div class="cta-section">
+                <h1 class="cta-section__title">
+                    Explore Nossos Eventos Acadêmicos
+                </h1>
+                <p class="cta-section__subtitle">
+                    Palestras, cursos e treinamentos exclusivos para o seu desenvolvimento profissional.
+                </p>
+                <a href="html/page-3-cadUsuario.html" class="btn-principal cta-button">
+                    FAÇA SUA INSCRIÇÃO AQUI
+                </a>
+            </div>
+
+            <div class="carousel-section">
+                <h2 class="carousel-section__title">Tipos de Eventos</h2>
+                <div class="carousel-wrapper">
+                    <button id="prev-btn" class="carousel-button">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <div id="carousel-container" class="carousel-container">
+
+                        <a href="html/page-2-listagem.html?categoria=Palestras"
+                            class="carousel-item carousel-item--palestras">
+                            <div class="carousel-item__icon">💡</div>
+                            <h3 class="carousel-item__title">Palestras</h3>
+                            <p class="carousel-item__description">Aulas magnas e seminários de curta duração sobre temas
+                                atuais.</p>
+                            <span class="carousel-item__link">Ver todos &rarr;</span>
+                        </a>
+
+                        <a href="html/page-2-listagem.html?categoria=Cursos"
+                            class="carousel-item carousel-item--cursos">
+                            <div class="carousel-item__icon">📚</div>
+                            <h3 class="carousel-item__title">Cursos</h3>
+                            <p class="carousel-item__description">Programas de aprofundamento com carga horária
+                                completa.
+                            </p>
+                            <span class="carousel-item__link">Ver todos &rarr;</span>
+                        </a>
+
+                        <a href="html/page-2-listagem.html?categoria=Treinamentos"
+                            class="carousel-item carousel-item--treinamentos">
+                            <div class="carousel-item__icon">🛠️</div>
+                            <h3 class="carousel-item__title">Treinamentos</h3>
+                            <p class="carousel-item__description">Workshops práticos e sessões de desenvolvimento de
+                                habilidades.</p>
+                            <span class="carousel-item__link">Ver todos &rarr;</span>
+                        </a>
+
+                        <a href="html/page-2-listagem.html?categoria=Congressos"
+                            class="carousel-item carousel-item--congressos">
+                            <div class="carousel-item__icon">🌐</div>
+                            <h3 class="carousel-item__title">Congressos</h3>
+                            <p class="carousel-item__description">Grandes encontros anuais e apresentações de artigos
+                                científicos.</p>
+                            <span class="carousel-item__link">Ver todos &rarr;</span>
+                        </a>
+
+                    </div>
+
+                    <button id="next-btn" class="carousel-button">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section id="inscricoes" class="usuario-cta">
+        <div class="container">
+            <h3>Área destinada aos patrocinadores</h3>
+            <a href="html/page-3-cadUsuario.html" class="btn-principal">Cadastre-se para Eventos</a>
+        </div>
+    </section>
+
+    <br>
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/Faculdadeesuda/" target="_blank" title="Facebook"><i
+                        class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/faculdadeesuda/" target="_blank" title="Instagram"><i
+                        class="bi bi-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=558134124242&text&type=phone_number&app_absent=0"
+                    target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.youtube.com/channel/UC4x0NDkpa9jPQT7Qcw7aWSQ" target="_blank" title="YouTube"><i
+                        class="bi bi-youtube"></i></a>
+            </div>
+
+            <p>&copy; 2025 ESUDA Conecta. Todos os direitos reservados.</p>
+            <a href="html/admin_login.html" class="admin-link">Área Administrativa</a>
+        </div>
+    </footer>
+
+    <script src="js/page-1-carro.js"></script>
+</body>
+
+</html>

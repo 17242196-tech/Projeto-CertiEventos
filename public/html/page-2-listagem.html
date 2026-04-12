@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <base href="/projetoSiteEsudaConecta/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESUDA Conecta | Lista de Eventos</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo ESUDA Conecta" class="logo-img">
+
+    <nav class="w3-hide-small w3-card-2" style="margin-top: 0;">
+      <div class="w3-bar w3-black w3-padding-small" id="main-nav">
+        <a href="https://esuda.edu.br/" target="_blank"
+          class="w3-bar-item w3-button w3-hover-orange w3-mobile w3-text-white">HOME ESUDA</a>
+        <a href="index.html" class="w3-bar-item w3-button w3-hover-orange w3-mobile">INÍCIO</a>
+
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-button w3-hover-orange">
+            SETOR DO USUÁRIO <i class="fas fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-blue w3-bar-block w3-card-4 w3-animate-opacity dropdown-esuda">
+            <a href="html/page-3-cadUsuario.html" class="w3-bar-item w3-button">Cadastrar Usuário</a>
+            <a href="html/page-1-carro.html" class="w3-bar-item w3-button">Tipos de Eventos</a>
+            <a href="html/page-2-listagem.html" class="w3-bar-item w3-button">Lista de Eventos</a>
+            <a href="html/page-5-certificado.html" class="w3-bar-item w3-button">Certificado</a>
+          </div>
+        </div>
+
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-button w3-hover-orange">
+            EVENTOS <i class="fas fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-blue w3-bar-block w3-card-4 w3-animate-opacity dropdown-esuda">
+            <a href="html/admin_login.html" class="w3-bar-item w3-button">Cadastrar Evento</a>
+            <a href="html/page-1-carro.html" class="w3-bar-item w3-button">Tipo de Evento</a>
+            <a href="html/page-2-listagem.html" class="w3-bar-item w3-button">Lista de Eventos</a>
+            <a href="html/page-3-cadUsuario.html" class="w3-bar-item w3-button">Inscreva-se</a>
+          </div>
+        </div>
+
+        <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-border w3-white w3-small"
+          style="width: 200px; margin-top: 4px;" placeholder="Pesquisar Eventos">
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+    <section class="listagem-eventos-wrap">
+      <div class="container-listagem">
+
+        <div class="w3-dropdown-hover">
+          <h1 class="page-title dropdown-title">
+            <span id="category-display">Todos os Eventos</span>
+            <i class="fas fa-filter text-destaque"></i>
+          </h1>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-opacity dropdown-esuda"
+            style="z-index: 100;">
+            <a href="?categoria=Todos" class="w3-bar-item w3-button">Todos os Eventos</a>
+            <a href="?categoria=Palestras" class="w3-bar-item w3-button">Palestras</a>
+            <a href="?categoria=Cursos" class="w3-bar-item w3-button">Cursos</a>
+            <a href="?categoria=Treinamentos" class="w3-bar-item w3-button">Treinamentos</a>
+            <a href="?categoria=Congressos" class="w3-bar-item w3-button">Congressos</a>
+          </div>
+        </div>
+
+        <p class="page-subtitle">Encontre o evento ideal para você.</p>
+
+        <div class="filtros-container">
+          <button class="filtro-ativo">Todos</button>
+          <button class="filtro-padrao">Online</button>
+          <button class="filtro-padrao">Presencial</button>
+          <button class="filtro-padrao">Gratuito</button>
+          <button class="filtro-padrao">Próxima Semana</button>
+        </div>
+
+        <div class="cards-grid">
+          <div class="event-card-list border-red-esuda">
+            <span class="tag tag-online">Gratuito | Online</span>
+            <h2 class="card-title">Inovação e Empreendedorismo Digital</h2>
+            <p class="card-subtitle">Por Prof. Dr. João Silva</p>
+            <ul class="card-details">
+              <li><strong>Data:</strong> 25/Novembro - 19:30h</li>
+            </ul>
+            <a href="html/page-3-cadUsuario.html?evento=Inovacao" class="btn-inscricao">INSCRIÇÃO</a>
+          </div>
+
+          <div class="event-card-list border-azul-esuda">
+            <span class="tag tag-presencial">R$ 99,00 | Presencial</span>
+            <h2 class="card-title">Introdução à Data Science</h2>
+            <a href="html/page-3-cadUsuario.html?evento=DataScience" class="btn-inscricao">INSCRIÇÃO</a>
+          </div>
+
+          <div class="event-card-list border-verde-esuda">
+            <span class="tag tag-online-pago">R$ 50,00 | Online</span>
+            <h2 class="card-title">Treinamento em Soft Skills</h2>
+            <a href="html/page-3-cadUsuario.html?evento=SoftSkills" class="btn-inscricao">INSCRIÇÃO</a>
+          </div>
+        </div>
+
+        <div class="paginacao-container">
+          <button class="paginacao-item-disabled">&larr; Anterior</button>
+          <button class="paginacao-item-active">1</button>
+          <button class="paginacao-item">Próxima &rarr;</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <section id="inscricoes" class="usuario-cta">
+    <div class="container">
+      <h3>Área destinada aos patrocinadores</h3>
+      <a href="html/page-3-cadUsuario.html" class="btn-principal">Cadastre-se para Eventos</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Faculdadeesuda/" target="_blank" title="Facebook"><i
+            class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/faculdadeesuda/" target="_blank" title="Instagram"><i
+            class="bi bi-instagram"></i></a>
+        <a href="https://api.whatsapp.com/send/?phone=558134124242" target="_blank" title="WhatsApp"><i
+            class="bi bi-whatsapp"></i></a>
+        <a href="https://www.youtube.com/channel/UC4x0NDkpa9jPQT7Qcw7aWSQ" target="_blank" title="YouTube"><i
+            class="bi bi-youtube"></i></a>
+      </div>
+
+      <p>&copy; 2025 ESUDA Conecta. Todos os direitos reservados.</p>
+      <a href="html/admin_login.html" class="admin-link">Área Administrativa</a>
+    </div>
+  </footer>
+
+  <script src="js/page-2-listagem.js"></script>
+</body>
+
+</html>

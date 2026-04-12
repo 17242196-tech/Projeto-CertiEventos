@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Administrativo</title>
+  <link rel="stylesheet" href="../css/w3.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="w3-bar w3-black">
+    <a href="/index.html" class="w3-bar-item w3-button">Início</a>
+    <a href="/admin" class="w3-bar-item w3-button">Sair</a>
+  </header>
+
+  <main class="w3-container">
+    <h2>Lista de Inscrições</h2>
+    <table class="w3-table-all w3-hoverable" id="tabelaInscricoes">
+      <thead>
+        <tr class="w3-blue">
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Evento</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="message-box"></div>
+  </main>
+
+  <script>
+    async function carregarInscricoes() {
+      const msgBox = document.getElementById("message-box");
+      try {
+        const response = await fetch("http://localhost:3000/inscricoes");
+        if (!response.ok) {
+          msgBox.textContent = "Erro ao carregar inscrições.";
+          msgBox.style.color = "red";
+          return;
+        }
+        const inscricoes = await response.json();
+        const tbody = document.querySelector("#tabelaInscricoes tbody");
+        tbody.innerHTML = "";
+        inscricoes.forEach(i => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${i.id}</td>
+            <td>${i.nome_completo}</td>
+            <td>${i.email}</td>
+            <td>${i.evento}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (error) {
+        msgBox.textContent = "Erro de conexão com o servidor.";
+        msgBox.style.color = "red";
+      }
+    }
+    carregarInscricoes();
+  </script>
+</body>
+</html>
